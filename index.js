@@ -5,8 +5,8 @@ function calc() {
     const money = Number(document.getElementById('money').value);
     const result = document.getElementById('result');
 
-    if (!Number.isFinite(baseInput) || baseInput < 100) {
-        result.innerHTML = "最初の金額は100以上を指定してください。";
+    if (!Number.isFinite(baseInput) || baseInput < 10) {
+        result.innerHTML = "賭けるチップは10以上を指定してください。";
         return;
     }
     if (!Number.isFinite(molecule) || !Number.isFinite(denominator) || molecule <= 0 || denominator <= 0) {
@@ -14,7 +14,7 @@ function calc() {
         return;
     }
     if (!Number.isFinite(money) || money < Math.round(baseInput * 1.5)) {
-        result.innerHTML = "所持金が不足しています（1回分の罰金以上に設定してください）。";
+        result.innerHTML = "所持チップが不足しています（1回分の罰金以上に設定してください）。";
         return;
     }
 
@@ -40,10 +40,10 @@ function calc() {
         rounds += 1;
 
         if (rounds === 1) {
-            text += `1: ${currentBet} 負けた場合: -${penalty} 勝った場合: +${reward}<br>`;
+            text += `1: ${currentBet}チップ 負けた場合: -${penalty}チップ 勝った場合: +${reward}チップ<br>`;
         } else {
             const netProfit = reward - prevLoss;
-            text += `${rounds}: ${currentBet} 負けた場合: -${totalLoss} 勝った場合: ${netProfit}<br>`;
+            text += `${rounds}: ${currentBet}チップ 負けた場合: -${totalLoss}チップ 勝った場合: ${netProfit}チップ<br>`;
         }
 
         currentBet = Math.round(currentBet * stepMult);
@@ -54,7 +54,7 @@ function calc() {
 
     const percentage = 100 * Math.pow(2 / 3, rounds);
 
-    text += `損失: ${totalLoss}<br>`;
+    text += `損失: ${totalLoss}チップ<br>`;
     text += `継続できる回数: ${rounds}回<br>`;
     text += `すべてを失う確率: ${percentage}%<br>`;
 
