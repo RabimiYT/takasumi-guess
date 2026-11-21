@@ -11,6 +11,7 @@
 <body>
     <main>
         <h1>TakasumiBOT Guess 計算機</h1>
+
         <div>
             <label for="base">最初のチップ数</label>
             <input type="number" id="base" placeholder="最初のチップ数" autocomplete="off" value="10" min="10">
@@ -24,10 +25,29 @@
             <label for="money">所持チップ</label>
             <input type="number" id="money" placeholder="所持チップ" autocomplete="off" value="100" min="15">
         </div>
-        <button onclick="calc()">計算</button>
-        <h2>
-            結果
-        </h2>
+
+        <div>
+            <label for="pickStyle">選び方モード</label>
+            <select id="pickStyle">
+                <option value="fixed2">迷ったら「2」固定（偏り防止）</option>
+                <option value="random">完全ランダム抽選（1〜3）</option>
+                <option value="streak">連敗中は同じ数字を貫く</option>
+                <option value="rotate">1 → 2 → 3 でローテーション</option>
+            </select>
+        </div>
+
+        <div>
+            <span>選ぶ数字の目安:</span>
+            <button type="button" onclick="selectNumber('1')">1を選ぶ</button>
+            <button type="button" onclick="selectNumber('2')">2を選ぶ</button>
+            <button type="button" onclick="selectNumber('3')">3を選ぶ</button>
+            <button type="button" onclick="pickRecommended()">おすすめを提案</button>
+        </div>
+        <div id="choiceGuide">選択中: 未選択（勝率 1/3 = 約33.33%）</div>
+
+        <button type="button" onclick="calc()">計算</button>
+
+        <h2>結果</h2>
         <div id="result"></div>
     </main>
     <footer>
