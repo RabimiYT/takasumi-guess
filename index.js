@@ -64,7 +64,7 @@ function calc() {
     }
 
     const loseMult = 1.5;
-    const winMult = 2.8;
+    const winMult = 2.4;
     const stepMult = molecule / denominator;
 
     let currentBet = baseInput;
